@@ -1,0 +1,34 @@
+5: OverRide -> epsilon
+8: RetType ->  VOID
+9: Formals -> epsilon
+32: Type -> INT
+39: Exp -> NUM
+18: Statement -> Type ID ASSIGN Exp SC
+14: Statements -> Statement
+40: Exp -> NUM B
+30: ExpList -> Exp
+28: Call -> ID LPAREN ExpList RPAREN
+20: Statement -> Call SC
+15: Statements -> Statements Statement
+41: Exp -> STRING
+30: ExpList -> Exp
+28: Call -> ID LPAREN ExpList RPAREN
+20: Statement -> Call SC
+15: Statements -> Statements Statement
+4: FuncDecl -> OverRide RetType ID LPAREN Formals RPAREN LBRACE Statements RBRACE
+5: OverRide -> epsilon
+8: RetType ->  VOID
+9: Formals -> epsilon
+29: Call -> ID LPAREN RPAREN
+20: Statement -> Call SC
+14: Statements -> Statement
+39: Exp -> NUM
+30: ExpList -> Exp
+28: Call -> ID LPAREN ExpList RPAREN
+20: Statement -> Call SC
+15: Statements -> Statements Statement
+4: FuncDecl -> OverRide RetType ID LPAREN Formals RPAREN LBRACE Statements RBRACE
+2: Funcs -> epsilon
+3: Funcs -> FuncDecl Funcs
+3: Funcs -> FuncDecl Funcs
+1: Program -> Funcs
