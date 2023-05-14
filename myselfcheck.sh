@@ -1,12 +1,11 @@
 #!/bin/bash 
 # change these per each homework
 #	link to tests:
-testsurl="https://webcourse.cs.technion.ac.il/fc159753hw_236360_202202/hw/WCFiles/X2363602022021-hw2-tests.zip"
 makefileurl="https://webcourse.cs.technion.ac.il/fc159753hw_236360_202202/hw/WCFiles/X2363602022021-Makefile-hw2"
 #	number of tests: 
-numtests=2 
+numtests=34
 #	command to execute test: 
-command="./hw2 < t\$i.in >& t\$i.res"
+command="./hw2 < ../compi_hw2_tests_improved/in/t\$i.in >& t\$i_ours.out"
 hostname="cscomp"
 tmpdir="selfcheck_tmp"
 if [ $( hostname ) != "$hostname" ]
@@ -85,32 +84,18 @@ if [ ! -f hw2 ]
 	exit 
 fi 
 
-wget --no-check-certificate "$testsurl" -O hw2-tests.zip &> /dev/null 
-if [ ! -f hw2-tests.zip ] 
-	then 
-	echo "Unable to download tests!" 
-	exit 
-fi
-
-unzip hw2-tests.zip &> /dev/null
-
-if [[ $? != 0 ]]
-	then 
-	echo "Unable to unzip tests!" 
-	exit 
-fi 
-
 i="1" 
 
 while [ $i -le $numtests ] 
 	do 
 	eval $command 
-	diff t$i.res t$i.out &> /dev/null 
+	diff t$i_ours.out ../compi_hw2_tests_improved/expected/t$i.out &> /dev/null 
 	if [[ $? != 0 ]] 
 		then
 		echo "Failed test #"$i"!" 
 		exit 
-	fi 
+	fi
+    echo "Passed test #"$i"!" 
 	i=$[$i+1] 
 done 
 
